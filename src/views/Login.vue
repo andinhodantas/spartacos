@@ -45,7 +45,14 @@
     
     h3 {
         font-family: 'Lemon', cursive;
-        color: #941111;
+        font-weight: 500;
+        /* color: #941111; */
+        background-image: linear-gradient(to bottom, #be0000, #c20303, #000000);
+        background-clip: text;
+        -webkit-background-clip: text; /* Alguns navegadores precisam do prefixo */
+
+        /* Terceiro passo: apagar o texto, deixando apenas o fundo atrás dele */
+        -webkit-text-fill-color: transparent;
         font-size: 2.3rem;
         text-align: center;
     }
@@ -96,7 +103,7 @@
     }
 
     #link-criar-conta {
-        margin-left: 23vw;
+        margin-left: 18vw;
         margin-top: 0.2rem;
         /* text-align: center; */
     }
