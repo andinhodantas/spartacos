@@ -8,5 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style>
-
+    body {
+    background-color: black;
+    }
 </style>
