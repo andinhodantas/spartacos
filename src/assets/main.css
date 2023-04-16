@@ -9,3 +9,13 @@
     background-position: center;
 }
 
+
+.imgCardTreino {
+    background-image: url('../../public/imgCadTreino.svg');
+    height: 10rem;
+    width: 40%;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center;
+    margin: 0.5rem auto;
+} 

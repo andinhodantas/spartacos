@@ -18,6 +18,7 @@ import { RouterLink } from "vue-router";
     </menu>
   </div>
 </template>
+
 <style scoped>
 .cabecalho {
   margin: 0 auto;  
@@ -26,6 +27,5 @@ import { RouterLink } from "vue-router";
   gap: 30px;
   
 }
-
 
 </style>

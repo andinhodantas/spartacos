@@ -37,9 +37,7 @@
             <div id="link-criar-conta">
                 <RouterLink id="criar-conta" to="/">Já possui cadastro? <span id="conta">Login</span></RouterLink>
                 <br>
-       <br>
-       <br><br><br><br><br>
-       <p>ss</p>
+       <!-- kskks -->
             </div>
        </form>
       
