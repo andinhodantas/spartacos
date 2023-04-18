@@ -1,11 +1,202 @@
 <script>
-     import { RouterLink } from 'vue-router'
+import { RouterLink } from "vue-router";
+// export default{
+//     data(){
+//         return{
+//             iniciar(){
+//                 if(x=1){
+//                     alert("Cadastro relizado com sucesso")
+//                     }
+//                 }
+//         }
+//     }
+// }
 </script>
 
 <template>
+  <div class="pagina">
     <div>
-        <h1>formulario para cadastrar exercicio</h1>
-        <button>cadastrar</button>
-        <RouterLink to="/paginaInicial">voltar para tela inicial</RouterLink>
+      <header>
+        <div class="cabecalho">
+          <img src="../../public/iconeMenu.svg" alt="" />
+          <img id="logo" src="../../public/logo.svg" alt="" />
+          <img src="../../public/iconeperfil.svg" alt="" />
+        </div>
+      </header>
+      <div class="imgCardTreino">
+        <!-- imagem de fundo -->
+      </div>
     </div>
+    <form>
+      <h3>Cadastrar exercício</h3>
+      <hr />
+
+      
+      <div class="formulario">
+        <div class="input-container">
+          <label for="id_nome_exe">Nome do execício: </label>
+          <input type="text" id="id_nome_exe" value="" />
+        </div>
+
+        <div class="input-container">
+          <label for="id_n_series">Número de séries: </label>
+          <input type="number" id="id_n_series" value="" />
+        </div>
+
+        <div class="input-container">
+          <label for="id_repeticoes">Repetições: </label>
+          <input type="number" id="id_repeticoes" value="" />
+        </div>
+
+        <div class="input-container">
+          <label for="id_carga">Carga: </label>
+          <input type="text" id="id_carga" value="" />
+        </div>
+      </div>
+
+      <button>
+        <RouterLink  @click="iniciar()" to="/cadastrarExercicio">Cadastrar exercicio</RouterLink>
+      </button>
+    </form>
+
+    
+  </div>
 </template>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Lemon&display=swap");
+
+@media (max-width: 500px) {
+  .pagina {
+    margin: none;
+  }
+}
+.pagina {
+  width: 22.5rem;
+  margin: 0 auto;
+  
+  background-color: black;
+  height: 100vh;
+}
+.cabecalho {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #ffffff;
+}
+
+.cabecalho img {
+  /* width: 3rem; */
+  height: 3rem;
+  margin-bottom: 0.6rem;
+}
+
+#logo {
+  height: 4.5rem;
+}
+
+form {
+  background-color: #525151;
+  width: 95%;
+  margin: auto;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+form input {
+  border: 0;
+  border-radius: 0.5rem;
+  position: relative;
+  margin:  0 5rem;
+  font-size: 1.3rem;
+  margin: 0 2rem ;
+  text-align: center;
+}
+
+h3 {
+  color: #e5e2e2da;
+  font-family: "Itim";
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 0.6rem;
+  
+}
+h4{
+    
+width: 183px;
+height: 19px;
+left: 39px;
+top: 360px;
+
+font-family: 'Itim';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: #E6E2E2;
+
+}
+
+hr {
+  border: 1px solid #e5e2e273;
+  background-color: #e5e2e273;
+  height: -1px;
+  width: 72%;
+  margin-top: -1rem;
+  border-radius: 0.5rem;
+}
+
+.select-treino {
+  display: flex;
+  height: auto;
+  align-items: center;
+  margin-top: 2rem;
+  grid-gap: 0.5rem;
+}
+
+label {
+  font-family: "Itim";
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: #e6e2e2;
+  font-weight: 400;
+  margin-left: 0.8rem;
+}
+
+select {
+  width: 11rem;
+  height: 1.8rem;
+  border-radius: 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button {
+  background-color: #e5e2e2;
+  border: 0;
+  border-radius: 0.5rem;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem auto;
+  padding-bottom: 0.4rem;
+  padding-top: 0.4rem;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 1.5rem;
+    color: #525151;
+}
+</style>
