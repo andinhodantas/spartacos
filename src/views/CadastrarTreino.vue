@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <div>
-        <div class="box">
+    <div class="pagina">
+        <div >
             <header>
                 <div class="cabecalho">
                     <img src="../../public/iconeMenu.svg" alt="">
@@ -12,9 +12,10 @@
                     <img src="../../public/iconeperfil.svg" alt="">
                 </div>
             </header>
-           <div class="imgCardTreino">
+           <menu class="imgCardTreino">
+               <img src="../../public/imgTreino.svg" alt="">
             <!-- imagem de fundo -->
-           </div>
+           </menu>
         </div>
         <form>
             <h3>Cadastrar treino</h3>
@@ -79,6 +80,7 @@ hr {
     border-radius: 0.5rem;
 }
 
+
 .select-treino {
     display: flex;
     height: auto;
@@ -102,6 +104,9 @@ select {
     border-radius: 0.5rem;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+menu img{
+  height: 20rem;
 }
 
 button {

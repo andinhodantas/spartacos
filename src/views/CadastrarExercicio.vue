@@ -23,9 +23,10 @@ import { RouterLink } from "vue-router";
           <img src="../../public/iconeperfil.svg" alt="" />
         </div>
       </header>
-      <div class="imgCardTreino">
-        <!-- imagem de fundo -->
-      </div>
+      <menu class="imgCardTreino">
+               <img src="../../public/imgTreino.svg" alt="">
+            <!-- imagem de fundo -->
+           </menu>
     </div>
     <form>
       <h3>Cadastrar exercício</h3>
@@ -66,18 +67,7 @@ import { RouterLink } from "vue-router";
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Itim&family=Lemon&display=swap");
 
-@media (max-width: 500px) {
-  .pagina {
-    margin: none;
-  }
-}
-.pagina {
-  width: 22.5rem;
-  margin: 0 auto;
-  
-  background-color: black;
-  height: 100vh;
-}
+
 .cabecalho {
   margin: 0 auto;
   width: 100%;
@@ -198,5 +188,9 @@ a {
     font-weight: 200;
     font-size: 1.5rem;
     color: #525151;
+}
+menu img{
+  height: 13%;
+  margin: 0 2rem;
 }
 </style>

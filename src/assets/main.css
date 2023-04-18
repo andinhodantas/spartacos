@@ -10,12 +10,22 @@
 }
 
 
-.imgCardTreino {
-    background-image: url('../../public/imgCadTreino.svg');
-    height: 10rem;
-    width: 40%;
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position: center;
-    margin: 0.5rem auto;
+.imgCardTreino img {
+    height: 20rem;
+    
 } 
+.imgCardTreino{
+    margin: 0 auto;
+}
+@media (max-width: 500px) {
+    .pagina {
+      margin: none;
+    }
+  }
+  .pagina {
+    width: 22.5rem;
+    margin: 0 auto;
+    
+    background-color: black;
+    height: 100vh;
+  }

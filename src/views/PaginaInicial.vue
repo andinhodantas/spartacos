@@ -14,9 +14,9 @@ import { RouterLink } from "vue-router";
     <menu>
       <img src="../../public/imgTreino.svg" alt="">
       <br>
-    <button><RouterLink to="/cadastrarTreino">Meus Treinos</RouterLink></button>
+    <button><RouterLink to="/treino">Meus Treinos</RouterLink></button>
     <br />
-    <button><RouterLink to="/treino">Criar Treino</RouterLink></button>
+    <button><RouterLink to="/cadastrarTreino">Criar Treino</RouterLink></button>
     
     </menu>
   </div>
