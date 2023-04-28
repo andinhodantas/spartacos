@@ -1,5 +1,32 @@
 <script>
     import { RouterLink } from 'vue-router'
+    import { cadastrarUsuario } from '../api';
+
+    export default {
+        data() {
+            return {
+                nomeUsuario: '',
+                email: '',
+                senha: ''
+            }
+        },
+
+        methods: {
+            async cadastrar() {
+                try{
+                    const cad = await cadastrarUsuario(this.nomeUsuario, this.email, this.senha)
+                    if (cad.status == 200) {
+                        // ir para pagina
+                        console.log(cad)
+                    }
+                }
+                catch (erro) {
+                   alert(erro)
+                   // fazer aparecer uma mensagem de erro
+                }
+            }
+        }
+    }
 </script>
 
 <template>
@@ -9,27 +36,29 @@
             <h3>Cadastra-se</h3>
 
             <div class="input-container">
-                <input type="text" placeholder="Nome" value="" >
+                <input v-model="nomeUsuario" type="text" placeholder="Nome">
                 <img src="../../public/User.svg" alt="">
                 <!-- <i class="fa fa-envelope" style="font-size:24px;color: darkgray;"></i> -->
                 
             </div>
 
             <div class="input-container">
-                <input type="email" value="" placeholder="Email">
+                <input type="email" v-model="email" placeholder="Email">
                 <img src="../../public/Secured Letter.svg" alt="">
                 <!-- <i class="fa fa-envelope" style="font-size:24px;color: darkgray;"></i> -->
             </div>
 
             <div class="input-container">
-                <input type="password" value="" placeholder="Senha">
+                <input type="password" v-model="senha" placeholder="Senha">
                 <img src="../../public/Lock.svg" alt="">
             </div>
             <div></div>
 
             <div id="button-entrar">
                 
-                    <RouterLink to="/"><button type="button">Cadastre-se</button></RouterLink>
+                    <RouterLink to="/"><button
+                    @click="cadastrar"
+                     type="button">Cadastre-se</button></RouterLink>
                 
             </div>
 

@@ -1,14 +1,32 @@
 <script>
      import { RouterLink } from 'vue-router'
-     import {testar} from "../api"
-     export default{
+     import { fazerLogin } from '../api';
+
+     export default {
          data(){
              return{
-
+                email: '',
+                senha: ''
              }
          },
+
+         methods: {
+            async login(){
+
+                try {
+                    const loginUser = await fazerLogin(this.email, this.senha)
+                    console.log(loginUser)
+                }
+               
+                catch (erro) {
+                    alert(erro)
+                }
+
+            }
+         },
+
          mounted(){
-             testar()
+          
          }
          
          
@@ -21,14 +39,14 @@
         <form>
             <h3>Login</h3>
             <div class="input-container">
-                <input type="email" value="" placeholder="Email">
+                <input v-model="email" type="email" placeholder="Email">
                 <img src="../../public/Secured Letter.svg" alt="">
                 <!-- <i class="fa fa-envelope" style="font-size:24px;color: darkgray;"></i> -->
                 
             </div>
 
             <div class="input-container">
-                <input type="password" value="" placeholder="Senha">
+                <input v-model="senha" type="password" placeholder="Senha">
                 <img src="../../public/Lock.svg" alt="">
                 
             </div>
@@ -36,7 +54,9 @@
 
             <div id="button-entrar">
                 
-                    <RouterLink to="/paginaInicial"><button  type="button">Entrar</button></RouterLink>
+                    <RouterLink to="/paginaInicial"><button 
+                    @click="login"
+                    type="button">Entrar</button></RouterLink>
                 
             </div>
 

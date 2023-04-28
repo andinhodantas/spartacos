@@ -6,11 +6,33 @@ const api = axios.create({
     headers: {'X-Custom-Header': 'foobar'}
     });
 
-const testar = async()=>{
-    const teste = await api.get('/usuario/validar')
-    console.log(teste)
-    
-} 
+
+const cadastrarUsuario = async (nome, email, senha) => {
+    return await api.post('/cadastrarUsuario', {
+        nome: nome,
+        email: email,
+        senha: senha
+    })
+}
+
+
+const fazerLogin = async (email, senha) => {
+    return await api.post('/login', {
+        email: email,
+        senha: senha
+    })
+}
+
+const cadastrarTreino = async (nomeTreino) => {
+    return await api.post('/cadastrarTreino', {
+        treino: nomeTreino 
+    })
+}
+
+
+
 export{
-    testar
+    cadastrarUsuario,
+    fazerLogin,
+    cadastrarTreino
 }

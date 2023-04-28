@@ -1,5 +1,30 @@
 <script>
      import { RouterLink } from 'vue-router'
+     import {cadastrarTreino} from '../api'
+
+    export default {
+        data() {
+            return {
+                nomeTreino: ''
+            }
+        },
+
+        methods: {
+            async cadastrar(){
+
+                try {    
+                    const treino = await cadastrarTreino(this.nomeTreino)
+                    console.log(treino)
+                }
+
+                catch (erro) {
+                    alert(erro)
+                }
+            }
+        },
+    }
+
+
 </script>
 
 <template>
@@ -22,10 +47,12 @@
             <hr>
             <div class="select-treino">
                 <label for="nome_trino">Nome do treino:</label>
-                <input type="text" value="" placeholder="______________________">
+                <input type="text" v-model="nomeTreino" placeholder="______________________">
             </div>
 
-            <button>
+            <button 
+            @click="cadastrar"
+            >
                 <RouterLink to="/cadastrarExercicio">cadastrar exercicio</RouterLink>
             </button>
         </form>
