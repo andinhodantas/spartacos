@@ -1,5 +1,18 @@
 <script>
      import { RouterLink } from 'vue-router'
+     import {testar} from "../api"
+     export default{
+         data(){
+             return{
+
+             }
+         },
+         mounted(){
+             testar()
+         }
+         
+         
+     }
 </script>
 
 <template>
@@ -23,7 +36,7 @@
 
             <div id="button-entrar">
                 
-                    <RouterLink to="/paginaInicial"><button type="button">Entrar</button></RouterLink>
+                    <RouterLink to="/paginaInicial"><button  type="button">Entrar</button></RouterLink>
                 
             </div>
 
