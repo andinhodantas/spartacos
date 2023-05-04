@@ -1,16 +1,30 @@
 <script>
 import { RouterLink } from "vue-router";
-export default{
+import {cadastrarExercicio} from'../api'
+export default {
     data(){
         return{
-            iniciar(){
-                
-                    alert("Algo deu errado")
-                    
-                }
+            nomeExercicio:'',
+            series:'',
+            repeticoes:'',
+            carga:''
         }
+    },
+    methods: {
+          async cadastrarExercicios(){
+
+                try {    
+                    const exercicio = await cadastrarExercicio(this.nomeExercicio,this.series,this.repeticoes,this.carga)
+                    console.log(exercicio)
+                }
+
+                catch (erro) {
+                    alert('deu errado')
+                }
+            }
+        },
     }
-}
+
 </script>
 
 <template>
@@ -36,27 +50,29 @@ export default{
       <div class="formulario">
         <div class="input-container">
           <label for="id_nome_exe">Nome do execício: </label>
-          <input type="text" id="id_nome_exe" value="" />
+          <input type="text" id="id_nome_exe" v-model="nomeExercicio" />
         </div>
 
         <div class="input-container">
           <label for="id_n_series">Número de séries: </label>
-          <input type="number" id="id_n_series" value="" />
+          <input type="number" id="id_n_series" v-model="series" />
         </div>
 
         <div class="input-container">
           <label for="id_repeticoes">Repetições: </label>
-          <input type="number" id="id_repeticoes" value="" />
+          <input type="number" id="id_repeticoes" v-model="repeticoes" />
         </div>
 
         <div class="input-container">
           <label for="id_carga">Carga: </label>
-          <input type="text" id="id_carga" value="" />
+          <input type="text" id="id_carga" v-model="carga" />
         </div>
       </div>
 
-      <button>
-        <RouterLink  @click="iniciar()" to="/cadastrarExercicio">Cadastrar exercicio</RouterLink>
+      <button
+      @click="cadastrarExercicios">
+        
+        <RouterLink   to="/cadastrarExercicio">Cadastrar exercicio</RouterLink>
       </button>
     </form>
 
@@ -161,13 +177,13 @@ label {
   margin-left: 0.8rem;
 }
 
-select {
+/* select {
   width: 11rem;
   height: 1.8rem;
   border-radius: 0.5rem;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
+} */
 
 button {
   background-color: #e5e2e2;

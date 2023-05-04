@@ -46,7 +46,7 @@
             <h3>Cadastrar treino</h3>
             <hr>
             <div class="select-treino">
-                <label for="nome_trino">Nome do treino:</label>
+                <label for="nome_treino">Nome do treino:</label>
                 <input type="text" v-model="nomeTreino" placeholder="______________________">
             </div>
 
@@ -125,13 +125,13 @@ label {
     margin-left: 0.8rem;
 }
 
-select {
+/* select {
     width: 11rem;
     height: 1.8rem;
     border-radius: 0.5rem;
     -webkit-appearance: none;
     -moz-appearance: none;
-}
+} */
 menu img{
   height: 20rem;
 }

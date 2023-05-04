@@ -28,11 +28,20 @@ const cadastrarTreino = async (nomeTreino) => {
         treino: nomeTreino 
     })
 }
+const cadastrarExercicio = async (nomeExercicio,series,repeticoes,carga) => {
+    return await api.post('/cadastrarExercicio', {
+        exercicio: nomeExercicio,
+        series:series,
+        repeticões:repeticoes,
+        carga:carga
+    })
+}
 
 
 
 export{
     cadastrarUsuario,
     fazerLogin,
-    cadastrarTreino
+    cadastrarTreino,
+    cadastrarExercicio
 }

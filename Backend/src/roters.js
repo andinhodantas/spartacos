@@ -26,5 +26,10 @@ router.post('/cadastrarTreino', (req, res) => {
     console.log(dados)
     return res.status(200).json('Ok')
 })
+router.post('/cadastrarExercicio', (req, res) => {
+    const dados = req.body
+    console.log(dados)
+    return res.status(200).json('Exercicio cadastrado ')
+})
 
 module.exports = router
