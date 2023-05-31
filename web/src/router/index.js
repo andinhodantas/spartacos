@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
+import { checkToken, validarToken } from '../../autenticacao'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +52,32 @@ const router = createRouter({
       component: () => import('../views/Treino.vue')
     }
   ]
+})
+
+// toda vez que alguem tentar acessar uma rota
+// essa funcao será executada e se o nosso token for valido, agente deixa a pessoa passar
+// se não a pessoa será direconada para a tela de login
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.auth) {
+    
+    if (checkToken()) {
+      const validar = await validarToken(checkToken())
+      if (validar) {
+        next()
+      }
+      else {
+        next({name: "login"})
+      }
+      
+    }
+    else {
+      next({name: "login"})
+    }
+  }
+
+  else {
+    next()
+  }
 })
 
 export default router

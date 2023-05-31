@@ -16,9 +16,16 @@
                 try {
                     const loginUser = await fazerLogin(this.email, this.senha)
                     if(loginUser.status == 200){
-                        window.location.href="/cadastrarConta"
+
+                        // salvar o token no localstorage
+                        localStorage.setItem('token', loginUser.data.token)
+
+                        // salvar o id desse usuario tbm para que eu possa
+                        // pegar informaçoes a respeito dele
+                        localStorage.setItem('idUsuario', loginUser.data.idUsuarioLogado)
+
+                        window.location.href="/paginaInicial"
                     }
-                    console.log(loginUser)
                 }
                
                 catch (erro) {
