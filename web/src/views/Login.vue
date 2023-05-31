@@ -15,6 +15,9 @@
 
                 try {
                     const loginUser = await fazerLogin(this.email, this.senha)
+                    if(loginUser.status == 200){
+                        window.location.href="/cadastrarConta"
+                    }
                     console.log(loginUser)
                 }
                
@@ -54,9 +57,9 @@
 
             <div id="button-entrar">
                 
-                    <RouterLink to="/paginaInicial"><button 
+                    <button 
                     @click="login"
-                    type="button">Entrar</button></RouterLink>
+                    type="button">Entrar</button>
                 
             </div>
 
