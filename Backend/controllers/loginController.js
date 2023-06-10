@@ -16,7 +16,8 @@ const fazerLogin = (req, res) => {
 
         // estamos passando o id manualmente. Deve ser um id vindo do banco
         const token = jwt.sign({id: 1}, chaveSecreta, {
-            expiresIn: 600 // 10 min
+            // expiresIn: 600 // 10 min
+            expiresIn: '1d' // expira em 1 dia
         })
         return res.status(200).json({
             msg: "usuario logado", 

@@ -14,9 +14,9 @@ export const checkToken = () => {
 export const validarToken = async (token) => {
     const bearerToken = 'Bearer ' + token
     
-    return await api.post('validarToken', {
+    return await api.post('validarToken', {}, {
         headers: {
-            Autorization: bearerToken
+            'Authorization': bearerToken
         }
     })
 }

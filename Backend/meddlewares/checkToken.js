@@ -9,7 +9,10 @@ const checkToken = async (req, res, next) => {
     const validar = await req.headers.authorization
 
     if (!validar) {
-        return res.status(401).json({msg: "necessario ter um token"})
+        return res.status(401).json({
+            tokenValido: false,
+            msg: "necessario ter um token"
+        })
     }
     // alem da chave esta vindo o nome "Bearer"
     // vamos separar ele da nossa chave, transformando em um array
@@ -17,7 +20,10 @@ const checkToken = async (req, res, next) => {
     const token = validar.split(' ')[1]
 
     if (!token) {
-        return res.status(401).json({msg: "necessario ter um token"})
+        return res.status(401).json({
+            tokenValido: false,
+            msg: "necessario ter um token"
+        })
     }
 
     try {
@@ -26,7 +32,10 @@ const checkToken = async (req, res, next) => {
         return next()
     }
     catch (erro) {
-        return res.status(401).json({msg: "token invalido"})
+        return res.status(401).json({
+            tokenValido: false,
+            msg: "token invalido"
+        })
     }
 
 }

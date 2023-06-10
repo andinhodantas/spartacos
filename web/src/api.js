@@ -1,4 +1,5 @@
 import axios from "axios";
+import { checkToken } from "../autenticacao";
 
 const api = axios.create({
     baseURL: 'http://localhost:3000',
@@ -22,19 +23,34 @@ const fazerLogin = async (email, senha) => {
         senha: senha
     })
 }
-
+ 
 const cadastrarTreino = async (nomeTreino) => {
+    const bearerToken = 'Bearer ' + checkToken()
+
     return await api.post('/cadastrarTreino', {
         treino: nomeTreino 
-    })
+    },
+    {
+        headers: {
+                Authorization: bearerToken
+            }
+    }
+    )
 }
 const cadastrarExercicio = async (nomeExercicio,series,repeticoes,carga) => {
+    const bearerToken = 'Bearer ' + checkToken()
+
     return await api.post('/cadastrarExercicio', {
         exercicio: nomeExercicio,
         series:series,
         repeticões:repeticoes,
         carga:carga
-    })
+    },
+    {
+        headers: {
+                Authorization: bearerToken
+            }
+        })
 }
 
 
