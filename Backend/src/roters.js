@@ -1,7 +1,8 @@
 const express = require('express')
+const {exercicioController} = require('../controllers/exercicioController')
+const {fazerCadastro} = require('../controllers/cadastrarUsuarioM')
 
 const checkToken = require('../meddlewares/checkToken')
-
 
 const router = express.Router()
 
@@ -12,10 +13,13 @@ router.get('/usuario/validar',(req, res) =>{
 })
 
 
-router.post('/cadastrarUsuario', (req, res) => {
-    const dados = req.body
-    console.log(dados)
-    return  res.status(200).json('Ok')
+router.post('/cadastrarUsuario', fazerCadastro)
+
+router.get('/moroni', async(req, res) => {
+    n = await Filme.find({
+        //Filtro => titulo: 'Filme Teste 1', 
+    })
+    return  res.status(200).json(n)
 })
 
  
@@ -27,11 +31,8 @@ router.post('/cadastrarTreino', checkToken, (req, res) => {
     console.log(dados)
     return res.status(200).json('Ok')
 })
-router.post('/cadastrarExercicio', checkToken, (req, res) => {
-    const dados = req.body
-    console.log(dados)
-    return res.status(200).json('Exercicio cadastrado ')
-})
+
+router.post('/cadastrarExercicio', checkToken, exercicioController)
 
 // validar o token
 // se esse token for valido, retorna true
