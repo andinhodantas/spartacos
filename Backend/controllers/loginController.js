@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken')
+const Login = require('../models/loginModelMongo')
 
 require('dotenv').config({ path: '../.env'})
 
 const chaveSecreta = process.env.CHAVESECRETA
 
-const fazerLogin = (req, res) => {
+const fazerLogin = async (req, res) => {
     const dados = req.body
     console.log(dados)
     // verificar se esta vazio
@@ -32,6 +33,4 @@ const fazerLogin = (req, res) => {
 }
 
 
-module.exports = {
-    fazerLogin
-}
+module.exports = {fazerLogin}
