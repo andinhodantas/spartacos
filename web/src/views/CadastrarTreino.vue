@@ -12,8 +12,9 @@
         methods: {
             async cadastrar(){
 
-                try {    
-                    const treino = await cadastrarTreino(this.nomeTreino)
+                try {
+                    let idUsuario = localStorage.getItem('idUsuario')
+                    const treino = await cadastrarTreino(this.nomeTreino, idUsuario)
                     console.log(treino)
                 }
 

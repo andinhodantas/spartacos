@@ -40,6 +40,4 @@ const fazerLogin =async (req, res) => {
 
 module.exports = {
     fazerLogin,
-    
-    
 }
