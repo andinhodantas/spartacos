@@ -4,6 +4,7 @@ import {cadastrarExercicio, listarTreinos} from'../api'
 export default {
     data(){
         return{
+            nomeTreino: '',
             nomeExercicio:'',
             series:'',
             repeticoes:'',
@@ -17,12 +18,12 @@ export default {
           async cadastrarExercicios(){
 
                 try {    
-                    const exercicio = await cadastrarExercicio(this.nomeExercicio,this.series,this.repeticoes,this.carga)
-                    console.log(exercicio)
+                    const exercicio = await cadastrarExercicio(this.nomeTreino, this.nomeExercicio, this.carga, this.repeticoes, this.series)
+                   alert('Exercício cadastrado!')
                 }
 
                 catch (erro) {
-                    alert('deu errado')
+                    alert('Esse exercício já foi cadastrado nesse treino!')
                 }
             },
           async listar() {
@@ -60,7 +61,7 @@ export default {
 
         <div class="input-container">
           <label for="id_nome_treino">Nome do treino: </label>
-          <select>
+          <select v-model="nomeTreino">
             <option 
               v-for="treino in treinos"
                :key="treino.nome" 

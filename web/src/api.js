@@ -38,14 +38,18 @@ const cadastrarTreino = async (nomeTreino, id) => {
     }
     )
 }
-const cadastrarExercicio = async (nomeExercicio,series,repeticoes,carga) => {
+const cadastrarExercicio = async (treino, nome, carga, rep, serie) => {
     const bearerToken = 'Bearer ' + checkToken()
 
+    const idUser = localStorage.getItem("idUsuario")
+
     return await api.post('/cadastrarExercicio', {
-        exercicio: nomeExercicio,
-        series:series,
-        repeticões:repeticoes,
-        carga:carga
+        treino: treino,
+	    nome: nome,
+	    carga: carga,
+	    rep: rep,
+	    serie: serie,
+	    idUsuario: idUser
     },
     {
         headers: {

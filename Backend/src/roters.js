@@ -1,5 +1,5 @@
 const express = require('express')
-const {exercicioController} = require('../controllers/exercicioController')
+const {cadastrarExercicio} = require('../controllers/cadastrarExercicioController')
 const {fazerCadastro} = require('../controllers/cadastrarUsuarioM')
 
 const checkToken = require('../meddlewares/checkToken')
@@ -27,7 +27,7 @@ router.post('/login', fazerLogin)
 
 router.post('/cadastrarTreino', checkToken, cadastrarTreino)
 
-router.post('/cadastrarExercicio', checkToken, exercicioController)
+router.post('/cadastrarExercicio', checkToken, cadastrarExercicio)
 
 // validar o token
 // se esse token for valido, retorna true

@@ -36,3 +36,4 @@ CREATE TABLE treino_exercicios (
 	foreign key (id_treino)
 		references treino(id)
 );
+
