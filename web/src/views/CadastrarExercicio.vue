@@ -1,13 +1,16 @@
 <script>
 import { RouterLink } from "vue-router";
-import {cadastrarExercicio} from'../api'
+import {cadastrarExercicio, listarTreinos} from'../api'
 export default {
     data(){
         return{
             nomeExercicio:'',
             series:'',
             repeticoes:'',
-            carga:''
+            carga:'',
+
+            // exebir exercios
+            treinos: null
         }
     },
     methods: {
@@ -21,8 +24,15 @@ export default {
                 catch (erro) {
                     alert('deu errado')
                 }
-            }
+            },
+          async listar() {
+            const list = await listarTreinos()
+            this.treinos = list.data
+          }
         },
+        mounted(){
+          this.listar()
+        }
     }
 
 </script>
@@ -45,9 +55,21 @@ export default {
     <form>
       <h3>Cadastrar exercício</h3>
       <hr />
-
       
       <div class="formulario">
+
+        <div class="input-container">
+          <label for="id_nome_treino">Nome do treino: </label>
+          <select>
+            <option 
+              v-for="treino in treinos"
+               :key="treino.nome" 
+               :value="treino.nome">
+                {{ treino.nome }}
+            </option>
+          </select>
+        </div>
+
         <div class="input-container">
           <label for="id_nome_exe">Nome do execício: </label>
           <input type="text" id="id_nome_exe" v-model="nomeExercicio" />
@@ -122,7 +144,29 @@ form input {
   font-size: 1.3rem;
   margin: 0 2rem ;
   text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
+
+form select {
+  border: 0;
+  border-radius: 0.5rem;
+  position: relative;
+  margin:  0 5rem;
+  font-size: 1.3rem;
+  margin: 0 2rem ;
+  text-align: center;
+  width: 74%;
+  padding: 0.1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input:focus, select:focus {
+    box-shadow: 1px 1px 15px 1px;
+    border: 1px solid #52515150;
+    outline: 0;
+} 
 
 h3 {
   color: #e5e2e2da;

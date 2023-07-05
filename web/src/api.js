@@ -24,11 +24,12 @@ const fazerLogin = async (email, senha) => {
     })
 }
  
-const cadastrarTreino = async (nomeTreino) => {
+const cadastrarTreino = async (nomeTreino, id) => {
     const bearerToken = 'Bearer ' + checkToken()
 
     return await api.post('/cadastrarTreino', {
-        treino: nomeTreino 
+        treino: nomeTreino,
+        id: id
     },
     {
         headers: {
@@ -53,11 +54,21 @@ const cadastrarExercicio = async (nomeExercicio,series,repeticoes,carga) => {
         })
 }
 
+const listarTreinos = async () => {
+    const bearerToken = 'Bearer ' + checkToken()
+    return api.get('/listarTreinos', {
+        headers: {
+            Authorization: bearerToken
+        }
+    })
+}
+
 
 
 export{
     cadastrarUsuario,
     fazerLogin,
     cadastrarTreino,
-    cadastrarExercicio
+    cadastrarExercicio,
+    listarTreinos
 }
