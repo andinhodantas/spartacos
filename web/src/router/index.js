@@ -61,7 +61,10 @@ router.beforeEach(async (to, from, next) => {
 
   try {
      // se alguem estiver indo para uma rota que seja diferente de "login"
-    if (to.name != 'login') {
+if(to.name == 'cadastrarConta'){
+  next()
+}
+    else if (to.name != 'login') {
 
       // se tiver um token salvo no localstorage
       if (checkToken()) {
