@@ -15,6 +15,7 @@
         methods: {
             
             async cadastrar(){
+
                     
                 try {  
                     this.id = localStorage.getItem('idUsuario')
@@ -24,6 +25,7 @@
                         
                     }
                 }
+
 
                 catch (erro) {
                     alert('Dados não validos')
