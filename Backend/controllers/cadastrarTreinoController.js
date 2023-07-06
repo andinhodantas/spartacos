@@ -1,6 +1,6 @@
 
-const cadastrarTreinomysql = require("../moldels/cadastrarTreinoModel")
-const connection = require('../moldels/db')
+const cadastrarTreinomysql = require("../models/cadastrarTreinoModel")
+const connection = require('../models/db')
 const cadastrarTreino =  (req, res) => {
     const dados = req.body
     if (dados.treino) {

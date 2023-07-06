@@ -1,6 +1,6 @@
 const connection = require('./db')
-const listarTreino =  async() => {
-    const string = `select distinct nome from treino`
+const listarTreino =  async(id) => {
+    const string = `select  nome from treino where id_usuario = "${id}";`
          const usuario = await connection.execute(string) 
          return usuario[0]
 }

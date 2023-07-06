@@ -1,9 +1,10 @@
 
-const listarTreino = require("../moldels/listarTreino")
+const listarTreino = require("../models/listarTreino")
 
 const listarTreinoController = async (req, res) => {
     try{
-     const listar = await listarTreino()
+        const id = req.body.id
+     const listar = await listarTreino(id)
     return res.status(200).json(listar)
 }catch(error){
     throw Error(error)
