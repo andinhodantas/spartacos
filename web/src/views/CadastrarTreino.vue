@@ -5,21 +5,30 @@
     export default {
         data() {
             return {
-                nomeTreino: ''
+                nomeTreino: '',
+                id:null
+                
             }
         },
+        
 
         methods: {
+            
             async cadastrar(){
 
-                try {
-                    let idUsuario = localStorage.getItem('idUsuario')
-                    const treino = await cadastrarTreino(this.nomeTreino, idUsuario)
-                    console.log(treino)
+                    
+                try {  
+                    this.id = localStorage.getItem('idUsuario')
+                    const treino = await cadastrarTreino(this.nomeTreino,this.id)
+                    if(treino.status == 200){
+                        window.location.href="/cadastrarExercicio"
+                        
+                    }
                 }
 
+
                 catch (erro) {
-                    alert(erro)
+                    alert('Dados não validos')
                 }
             }
         },
@@ -54,7 +63,7 @@
             <button 
             @click="cadastrar"
             >
-                <RouterLink to="/cadastrarExercicio">cadastrar exercicio</RouterLink>
+                cadastrar exercicio
             </button>
         </form>
        
@@ -147,9 +156,6 @@ button {
     margin: 2.2rem auto;
     padding-bottom: 0.4rem;
     padding-top: 0.4rem;
-}
-
-a {
     text-decoration: none;
     font-family: 'Itim';
     font-style: normal;
@@ -157,6 +163,8 @@ a {
     font-size: 1.5rem;
     color: #525151;
 }
+
+
 
 
 </style>

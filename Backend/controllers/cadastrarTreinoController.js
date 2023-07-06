@@ -1,4 +1,5 @@
-const cadastrarTreinomysql = require("../moldels/cadastrarTreinoModel")
+
+const cadastrarTreinomysql = require("../models/cadastrarTreinoModel")
 
 const cadastrarTreino = (req, res) => {
 
@@ -14,6 +15,7 @@ const cadastrarTreino = (req, res) => {
             return res.status(500).json({msg: "O campo está vazio"})
             
         }
+
     }
     catch (error){
         return res.status(500).json({msg: 'erro no servidor'})

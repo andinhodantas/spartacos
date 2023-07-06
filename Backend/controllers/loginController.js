@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 
-const loginmodel = require('../moldels/loginModel')
+const loginmodel = require('../models/loginModel')
+
 
 require('dotenv').config({ path: '../.env'})
 

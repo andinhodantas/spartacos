@@ -24,12 +24,14 @@ const fazerLogin = async (email, senha) => {
     })
 }
  
-const cadastrarTreino = async (nomeTreino, id) => {
+
+const cadastrarTreino = async (nomeTreino,idUsuario) => {
     const bearerToken = 'Bearer ' + checkToken()
 
     return await api.post('/cadastrarTreino', {
-        treino: nomeTreino,
-        id: id
+        treino: nomeTreino, 
+        id:idUsuario
+
     },
     {
         headers: {
