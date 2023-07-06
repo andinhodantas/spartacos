@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 // criar banco
-const create = require('../moldels/createDataBase')
+const create = require('../models/createDataBase')
 create()
 
 
