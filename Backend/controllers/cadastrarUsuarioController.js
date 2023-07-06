@@ -1,4 +1,4 @@
-const cadastrarUsuario = require("../moldels/cadastrarUsuario")
+const cadastrarUsuario = require("../models/cadastrarUsuario")
 
 const cadastrarUsuarioC = async (req, res) => {
     try{

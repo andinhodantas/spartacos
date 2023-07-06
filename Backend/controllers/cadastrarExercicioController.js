@@ -1,4 +1,4 @@
-const cadastrarExerciciomysql = require("../moldels/cadastrarexercicioModel")
+const cadastrarExerciciomysql = require("../models/cadastrarexercicioModel")
 
 const cadastrarExercicio = async (req, res) => {
 
