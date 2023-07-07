@@ -9,8 +9,8 @@ const router = express.Router()
 const {fazerLogin} = require("../controllers/loginController")
 const { cadastrarTreino } = require('../controllers/cadastrarTreinoController')
 const { listarTreinoController } = require('../controllers/listartreinocontroller')
-
 const { cadastrarUsuarioC } = require('../controllers/cadastrarUsuarioController')
+const { listarExerciciosController } = require('../controllers/listarExerciciosController')
 
 
 router.get('/usuario/validar',(req, res) =>{
@@ -28,6 +28,8 @@ router.post('/login', fazerLogin)
 router.post('/cadastrarTreino', checkToken, cadastrarTreino)
 
 router.post('/cadastrarExercicio', checkToken, cadastrarExercicio)
+
+router.post('/listarExercicios', checkToken, listarExerciciosController)
 
 // validar o token
 // se esse token for valido, retorna true
