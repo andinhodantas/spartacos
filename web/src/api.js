@@ -73,12 +73,24 @@ const listarTreinos = async () => {
     })
 }
 
-
+const listarExercicios = async () => {
+    const bearerToken = 'Bearer ' + checkToken()
+    const idUser = localStorage.getItem("idUsuario")
+    return api.post('/listarExercicios', {
+        id: idUser
+    },
+    {
+        headers: {
+            Authorization: bearerToken
+        }
+    })
+}
 
 export{
     cadastrarUsuario,
     fazerLogin,
     cadastrarTreino,
     cadastrarExercicio,
-    listarTreinos
+    listarTreinos,
+    listarExercicios,
 }
