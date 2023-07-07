@@ -14,4 +14,4 @@ const listarTreinoController = async (req, res) => {
 
 module.exports = {
     listarTreinoController
-}
+} 
