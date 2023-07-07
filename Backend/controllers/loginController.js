@@ -1,11 +1,15 @@
 const jwt = require('jsonwebtoken')
-const loginmodel = require('../moldels/loginModel')
+
+const loginmodel = require('../models/loginModel')
+
 
 require('dotenv').config({ path: '../.env'})
 
 const chaveSecreta = process.env.CHAVESECRETA
 
+
 const fazerLogin =async (req, res) => {
+
     const dados = req.body
     const login = await loginmodel(dados.email,dados.senha)
     
@@ -37,7 +41,7 @@ const fazerLogin =async (req, res) => {
 }
 
 
-
 module.exports = {
     fazerLogin,
 }
+
