@@ -1,9 +1,32 @@
 <script>
-     import { RouterLink } from 'vue-router'
+import { listarExercicios } from '../api';
+
+export default {
+  data() {
+    return {
+      exercicios: null,
+    };
+  },
+  methods: {
+    async exibirExercios() {
+      try {
+        const idUsuario = localStorage.getItem("idUsuario");
+        const response = await listarExercicios(idUsuario);
+        this.exercicios = response.data;
+        console.log(response.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
+  mounted() {
+    this.exibirExercios();
+  },
+};
 </script>
 
 <template>
-    <div class="pagina" >
+  <div class="pagina">
     <header>
       <div class="cabecalho">
         <img src="../../public/iconeMenu.svg" alt="">
@@ -12,100 +35,27 @@
       </div>
     </header>
     <div class="menu">
-        <div>
-            <h1>Meus treinos</h1>
+    <div>
+      <h1>Meus treinos</h1>
         </div>
-        <div class="card">
-            <h1>Treino A:</h1>
-            <table>
-                <tr>
-                    <th>Exercicio</th>
-                    <th>Séries</th>
-                    <th>Repetições</th>
-                    <th>Carga</th>
-                </tr>
-                <tr>
-                    <td>Supino reto</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>15kg</td>
-                </tr>
-                <tr>
-                    <td>Crossover</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>15kg</td>
-                </tr>
-                <tr>
-                    <td>Puley</td>
-                    <td>2</td>
-                    <td>12</td>
-                    <td>20kg</td>
-                </tr>
-            </table>
-
+        <div v-for="treino in exercicios" :key="treino.Nome_Treino" class="card">
+          <h1>{{ treino.Nome_Treino }}</h1>
+          <table>
+            <tr>
+              <th>Exercicio</th>
+              <th>Séries</th>
+              <th>Repetições</th>
+              <th>Carga</th>
+            </tr>
+            <tr v-for="(exercicio, index) in treino.Nomes_Exercicios.split(',')" :key="index">
+              <td>{{ exercicio }}</td>
+              <td>{{ treino.Series.split(',')[index] }}</td>
+              <td>{{ treino.Repeticoes.split(',')[index] }}</td>
+              <td>{{ treino.Cargas.split(',')[index] }}</td>
+            </tr>
+          </table>
         </div>
-        <div class="card">
-            <h1>Treino B:</h1>
-            <table>
-                <tr>
-                    <th>Exercicio</th>
-                    <th>Séries</th>
-                    <th>Repetições</th>
-                    <th>Carga</th>
-                </tr>
-                <tr>
-                    <td>Leg press</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>30kg</td>
-                </tr>
-                <tr>
-                    <td>Adutor</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>25kg</td>
-                </tr>
-                <tr>
-                    <td>Cadeira extensora</td>
-                    <td>2</td>
-                    <td>12</td>
-                    <td>20kg</td>
-                </tr>
-            </table>
-
-        </div>
-        <div class="card">
-            <h1>Treino c:</h1>
-            <table>
-                <tr>
-                    <th>Exercicio</th>
-                    <th>Séries</th>
-                    <th>Repetições</th>
-                    <th>Carga</th>
-                </tr>
-                <tr>
-                    <td>Triceps Francês</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>30kg</td>
-                </tr>
-                <tr>
-                    <td>Banco Scott</td>
-                    <td>3</td>
-                    <td>15</td>
-                    <td>25kg</td>
-                </tr>
-                <tr>
-                    <td>Triceps Testa</td>
-                    <td>3</td>
-                    <td>10</td>
-                    <td>20kg</td>
-                </tr>
-            </table>
-
-        </div>
-    </div>
+      </div>
   </div>
 </template>
 <style scoped>
