@@ -12,12 +12,15 @@ import { RouterLink } from "vue-router";
       </div>
     </header>
     <menu>
+
       <img src="../../public/imgTreino.svg" alt="">
-      <br>
-    <RouterLink to="/treino"><button>Meus Treinos</button></RouterLink>
-    <br />
-    <RouterLink to="/cadastrarTreino"><button @click="cadastrartreino">Criar Treino</button></RouterLink>
-    
+        <br>
+      <RouterLink to="/treino"><button>Meus Treinos</button></RouterLink>
+        <br />
+      <RouterLink to="/cadastrarTreino"><button @click="cadastrartreino">Criar Treino</button></RouterLink>
+        <br />
+      <RouterLink to="/cadastrarExercicio"><button @click="cadastrartreino">Exercícios</button></RouterLink>
+
     </menu>
   </div>
 </template>
@@ -63,6 +66,7 @@ button{
   
   width: 250px;
   height: 51px;
+  /* padding: 22px 125px 22px 125px; */
   left: 55px;
   top: 420px;
   border-radius: 8px;

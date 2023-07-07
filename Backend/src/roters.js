@@ -18,7 +18,7 @@ router.get('/usuario/validar',(req, res) =>{
 })
 
 
-router.get('/listarTreinos',checkToken, listarTreinoController)
+router.post('/listarTreinos', checkToken, listarTreinoController)
 
 router.post('/cadastrarUsuarioM', fazerCadastro)
 router.post('/cadastrarUsuario', cadastrarUsuarioC)

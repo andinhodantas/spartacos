@@ -15,20 +15,16 @@
         methods: {
             
             async cadastrar(){
-
-                    
                 try {  
                     this.id = localStorage.getItem('idUsuario')
                     const treino = await cadastrarTreino(this.nomeTreino,this.id)
                     if(treino.status == 200){
-                        window.location.href="/cadastrarExercicio"
-                        
+                        alert('Treino cadastrado')
                     }
                 }
 
-
                 catch (erro) {
-                    alert('Dados não validos')
+                    alert('Dados invalidos')
                 }
             }
         },
