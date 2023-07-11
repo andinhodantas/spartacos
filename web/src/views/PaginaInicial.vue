@@ -59,7 +59,8 @@ header img{
   height: 4.5rem;
 }
 menu img{
-  height: 20rem;
+  height: 15rem;
+  margin-left:1rem
 }
 button{
   background-color: #525151;

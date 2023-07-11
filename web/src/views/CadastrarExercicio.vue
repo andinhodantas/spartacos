@@ -19,7 +19,18 @@ export default {
 
                 try {    
                     const exercicio = await cadastrarExercicio(this.nomeTreino, this.nomeExercicio, this.carga, this.repeticoes, this.series)
-                   alert('Exercício cadastrado!')
+                    console.log(exercicio.status);
+                    if (exercicio.status == 201) {
+                        alert('Exercício cadastrado!')
+                        const resultado = window.confirm("Quer adicionar mais algum exercicio?")
+                        if(resultado == false ){
+                          window.location.href="/Treino"
+                        }
+                        else{
+                          window.location.href="/cadastrarExercicio"
+                        }
+                        
+                    }
                 }
 
                 catch (erro) {
