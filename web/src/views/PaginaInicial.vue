@@ -1,25 +1,35 @@
 <script>
 import { RouterLink } from "vue-router";
+
+export default {
+  methods:{
+    async voltar(){
+       window.history.back()
+      }
+  }
+}
 </script>
 
 <template>
   <div class="pagina" >
     <header>
       <div class="cabecalho">
-        <img src="../../public/iconeMenu.svg" alt="">
+        <button @click="voltar" class="voltar">
+          <i class="fa fa-arrow-left"></i> 
+        </button>
         <img src="../../public/logo.svg" alt="" class="logo"/>
-        <img src="../../public/iconeperfil.svg" alt="">
+        <img src="../../public/iconeperfil.svg" alt="" class="foto">
       </div>
     </header>
     <menu>
 
       <img src="../../public/imgTreino.svg" alt="">
         <br>
-      <RouterLink to="/treino"><button>Meus Treinos</button></RouterLink>
+      <RouterLink to="/treino"><button class="botao">Meus Treinos</button></RouterLink>
         <br />
-      <RouterLink to="/cadastrarTreino"><button @click="cadastrartreino">Criar Treino</button></RouterLink>
+      <RouterLink to="/cadastrarTreino"><button class="botao">Criar Treino</button></RouterLink>
         <br />
-      <RouterLink to="/cadastrarExercicio"><button @click="cadastrartreino">Exercícios</button></RouterLink>
+      <RouterLink to="/cadastrarExercicio"><button class="botao">Exercícios</button></RouterLink>
 
     </menu>
   </div>
@@ -62,7 +72,7 @@ menu img{
   height: 15rem;
   margin-left:1rem
 }
-button{
+.botao{
   background-color: #525151;
   
   width: 250px;
@@ -80,6 +90,20 @@ button{
   font-size: 28px;
   line-height: 34px;
   text-align: center;
+}
+.voltar {
+    margin: 1rem 0.5rem;
+    width:40px;
+    color: #525151;
+    height:40px;
+    border-radius:0.8rem;
+
+}
+.foto{
+  margin:1rem 0;
+}
+i{
+    font-size:25px;
 }
 
 

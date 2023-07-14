@@ -15,7 +15,10 @@ export default {
         }
     },
     methods: {
-          async cadastrarExercicios(){
+      async voltar(){
+                window.history.back()
+            },
+           async cadastrarExercicios(){
 
                 try {    
                     const exercicio = await cadastrarExercicio(this.nomeTreino, this.nomeExercicio, this.carga, this.repeticoes, this.series)
@@ -40,7 +43,8 @@ export default {
           async listar() {
             const list = await listarTreinos()
             this.treinos = list.data
-          }
+          },
+          
         },
         mounted(){
           this.listar()
@@ -54,12 +58,15 @@ export default {
     <div>
       <header>
         <div class="cabecalho">
-          <img src="../../public/iconeMenu.svg" alt="" />
+          <button @click="voltar" class="voltar">
+                    <i class="fa fa-arrow-left"></i> 
+                </button>
           <img id="logo" src="../../public/logo.svg" alt="" />
-          <img src="../../public/iconeperfil.svg" alt="" />
+          <img src="../../public/iconeperfil.svg" alt="" class="foto"/>
         </div>
       </header>
       <menu class="imgCardTreino">
+        
                <img src="../../public/imgTreino.svg" alt="">
             <!-- imagem de fundo -->
            </menu>
@@ -104,9 +111,9 @@ export default {
       </div>
 
       <button
-      @click="cadastrarExercicios">
-        
-        <RouterLink   to="/cadastrarExercicio">Cadastrar exercicio</RouterLink>
+      @click="cadastrarExercicios"
+      class="cadastrar">
+        Cadastrar exercicio
       </button>
     </form>
 
@@ -233,15 +240,9 @@ label {
   margin-left: 0.8rem;
 }
 
-/* select {
-  width: 11rem;
-  height: 1.8rem;
-  border-radius: 0.5rem;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-} */
 
-button {
+
+.cadastrar {
   background-color: #e5e2e2;
   border: 0;
   border-radius: 0.5rem;
@@ -251,18 +252,36 @@ button {
   margin: 1.5rem auto;
   padding-bottom: 0.4rem;
   padding-top: 0.4rem;
-}
-
-a {
-    text-decoration: none;
+  text-decoration: none;
     font-family: 'Itim';
     font-style: normal;
     font-weight: 200;
     font-size: 1.5rem;
     color: #525151;
+
 }
+.input-container{
+  margin-left:0.8rem;
+}
+
+
+    
 menu img{
   height: 13%;
-  margin: 0 2rem;
+  margin: 0 3rem;
+}
+.voltar{
+    margin: 1rem 0.5rem;
+    width:40px;
+    color: #525151;
+    height:40px;
+    border-radius:0.8rem;
+
+}
+i{
+    font-size:25px;
+}
+.foto{
+  margin:1rem 0;
 }
 </style>

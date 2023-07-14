@@ -14,19 +14,25 @@
 
         methods: {
             
+            
             async cadastrar(){
                 try {  
                     this.id = localStorage.getItem('idUsuario')
                     const treino = await cadastrarTreino(this.nomeTreino,this.id)
                     if(treino.status == 200){
                         alert('Treino cadastrado')
+                        window.location.href="/cadastrarExercicio"
                     }
                 }
 
                 catch (erro) {
                     alert('Dados invalidos')
                 }
+            },
+            async voltar(){
+                window.history.back()
             }
+            
         },
     }
 
@@ -38,12 +44,15 @@
         <div >
             <header>
                 <div class="cabecalho">
-                    <img src="../../public/iconeMenu.svg" alt="">
-                    <img src="../../public/logo.svg" alt="" />
-                    <img src="../../public/iconeperfil.svg" alt="">
+                    <button @click="voltar" class="voltar">
+                        <i class="fa fa-arrow-left"></i> 
+                    </button>
+                    <img src="../../public/logo.svg" alt="" class="logo"/>
+                    <img src="../../public/iconeperfil.svg" alt="" class="foto">
                 </div>
             </header>
            <menu class="imgCardTreino">
+               
                <img src="../../public/imgTreino.svg" alt="">
             <!-- imagem de fundo -->
            </menu>
@@ -58,6 +67,7 @@
 
             <button 
             @click="cadastrar"
+            class="cadastrar"
             >
                 cadastrar exercicio
             </button>
@@ -78,6 +88,17 @@
         /* grid-gap: 3rem; */
         justify-content: space-between;
         border-bottom: 0.1rem solid #ffffff98 ;
+}
+header {
+  height: 5rem;
+  left: 0px;
+  top: 93px;
+
+border-bottom: 1.5px solid #FFFFFF;
+}
+header img{
+  
+  height: 3rem;
 }
 
 form {
@@ -138,11 +159,14 @@ label {
     -webkit-appearance: none;
     -moz-appearance: none;
 } */
+
 menu img{
   height: 20rem;
+  margin:0 auto;
+  
 }
 
-button {
+.cadastrar {
     background-color: #E5E2E2;
     border: 0;
     border-radius: 0.5rem;
@@ -160,7 +184,23 @@ button {
     color: #525151;
 }
 
+.voltar{
+    margin: 1rem 0.5rem;
+    width:40px;
+    color: #525151;
+    height:40px;
+    border-radius:0.8rem;
 
+}
+.foto{
+  margin:1rem 0;
+}
+i{
+    font-size:25px;
+}
+.logo{
+  height: 4.5rem;
+}
 
 
 </style>

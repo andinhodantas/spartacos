@@ -17,7 +17,10 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+    async voltar(){
+       window.history.back()
+      }
   },
   mounted() {
     this.exibirExercios();
@@ -29,9 +32,11 @@ export default {
   <div class="pagina">
     <header>
       <div class="cabecalho">
-        <img src="../../public/iconeMenu.svg" alt="">
+        <button @click="voltar" class="voltar">
+          <i class="fa fa-arrow-left"></i> 
+        </button>
         <img src="../../public/logo.svg" alt="" class="logo"/>
-        <img src="../../public/iconeperfil.svg" alt="">
+        <img src="../../public/iconeperfil.svg" alt="" class="foto">
       </div>
     </header>
     <div class="menu">
@@ -117,6 +122,20 @@ th{
 td{
     padding: 0.2rem 1rem;
     text-align: center;
+}
+.voltar{
+    margin: 1rem 0.5rem;
+    width:40px;
+    color: #525151;
+    height:40px;
+    border-radius:0.8rem;
+
+}
+.foto{
+  margin:1rem 0;
+}
+i{
+    font-size:25px;
 }
     
 
