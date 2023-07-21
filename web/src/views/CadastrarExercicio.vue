@@ -1,56 +1,67 @@
 <script>
 import { RouterLink } from "vue-router";
-import {cadastrarExercicio, listarTreinos} from'../api'
+import { cadastrarExercicio, listarTreinos } from "../api";
 export default {
-    data(){
-        return{
-            nomeTreino: '',
-            nomeExercicio:'',
-            series:'',
-            repeticoes:'',
-            carga:'',
+  data() {
+    return {
+      nomeTreino: "",
+      nomeExercicio: "",
+      series: "",
+      repeticoes: "",
+      carga: "",
 
-            // exebir exercios
-            treinos: null
-        }
+      // exebir exercios
+      treinos: null,
+    };
+  },
+  methods: {
+    async voltar() {
+      this.$router.go(-1);
     },
-    methods: {
-      async voltar(){
-                window.history.back()
-            },
-           async cadastrarExercicios(){
+    async cadastrarExercicios() {
+      try {
+        const exercicio = await cadastrarExercicio(
+          this.nomeTreino,
+          this.nomeExercicio,
+          this.repeticoes,
+          this.series
+        );
 
-                try {    
-                    const exercicio = await cadastrarExercicio(this.nomeTreino, this.nomeExercicio, this.carga, this.repeticoes, this.series)
-                    console.log(exercicio.status);
-                    if (exercicio.status == 201) {
-                        alert('Exercício cadastrado!')
-                        const resultado = window.confirm("Quer adicionar mais algum exercicio?")
-                        if(resultado == false ){
-                          window.location.href="/Treino"
-                        }
-                        else{
-                          window.location.href="/cadastrarExercicio"
-                        }
-                        
-                    }
-                }
-
-                catch (erro) {
-                    alert('Esse exercício já foi cadastrado nesse treino!')
-                }
-            },
-          async listar() {
-            const list = await listarTreinos()
-            this.treinos = list.data
-          },
-          
-        },
-        mounted(){
-          this.listar()
+        if (
+          (exercicio.status == 201 && this.nomeTreino,
+          this.nomeExercicio,
+          this.carga,
+          this.repeticoes,
+          this.series)
+        ) {
+          location.href = "/treino";
+          var resultado = confirm(
+            "Exercicio cadastrado \n Quer adicionar mais algum exercicio?"
+          );
+          if (resultado) {
+            console.log("entrou aqui");
+            location.href = "/cadastrarExercicio";
+          }
+        } else {
+          alert("Preencha todos os campos corretamente e tente novamente");
         }
-    }
-
+      } catch (erro) {
+        alert("Esse exercício já foi cadastrado nesse treino!");
+      }
+    },
+    async listar() {
+      const list = await listarTreinos();
+      this.treinos = list.data;
+    },
+    async logout() {
+      localStorage.removeItem("token");
+      location.href = "/";
+    },
+  },
+  mounted() {
+    this.listar();
+  },
+};
 </script>
 
 <template>
@@ -58,40 +69,36 @@ export default {
     <div>
       <header>
         <div class="cabecalho">
-          <button @click="voltar" class="voltar">
-                    <i class="fa fa-arrow-left"></i> 
-                </button>
+          <RouterLink to="/paginaInicial">
+            <button class="voltar">
+              <i class="fa fa-arrow-left"></i></button
+          ></RouterLink>
           <img id="logo" src="../../public/logo.svg" alt="" />
-          <img src="../../public/iconeperfil.svg" alt="" class="foto"/>
+          <button @click="logout" class="voltar">sair</button>
         </div>
       </header>
       <menu class="imgCardTreino">
-        
-               <img src="../../public/imgTreino.svg" alt="">
-            <!-- imagem de fundo -->
-           </menu>
+        <img src="../../public/imgTreino.svg" alt="" />
+        <!-- imagem de fundo -->
+      </menu>
     </div>
     <form>
       <h3>Cadastrar exercício</h3>
       <hr />
-      
-      <div class="formulario">
 
+      <div class="formulario">
         <div class="input-container">
           <label for="id_nome_treino">Nome do treino: </label>
           <select v-model="nomeTreino">
-            <option 
-              v-for="treino in treinos"
-               :key="treino.nome" 
-               :value="treino.nome">
-                {{ treino.nome }}
+            <option v-for="treino in treinos" :key="treino.nome" :value="treino.nome">
+              {{ treino.nome }}
             </option>
           </select>
         </div>
 
         <div class="input-container">
           <label for="id_nome_exe">Nome do execício: </label>
-          <input type="text" id="id_nome_exe" v-model="nomeExercicio" />
+          <input type="text" id="id_nome_exe" v-model="nomeExercicio" requerid />
         </div>
 
         <div class="input-container">
@@ -110,20 +117,13 @@ export default {
         </div>
       </div>
 
-      <button
-      @click="cadastrarExercicios"
-      class="cadastrar">
-        Cadastrar exercicio
-      </button>
+      <button @click="cadastrarExercicios" class="cadastrar">Cadastrar exercicio</button>
     </form>
-
-    
   </div>
 </template>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Itim&family=Lemon&display=swap");
-
 
 .cabecalho {
   margin: 0 auto;
@@ -159,9 +159,9 @@ form input {
   border: 0;
   border-radius: 0.5rem;
   position: relative;
-  margin:  0 5rem;
+  margin: 0 5rem;
   font-size: 1.3rem;
-  margin: 0 2rem ;
+  margin: 0 2rem;
   text-align: center;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
@@ -171,9 +171,9 @@ form select {
   border: 0;
   border-radius: 0.5rem;
   position: relative;
-  margin:  0 5rem;
+  margin: 0 5rem;
   font-size: 1.3rem;
-  margin: 0 2rem ;
+  margin: 0 2rem;
   text-align: center;
   width: 74%;
   padding: 0.1rem;
@@ -181,11 +181,12 @@ form select {
   margin-bottom: 1rem;
 }
 
-input:focus, select:focus {
-    box-shadow: 1px 1px 15px 1px;
-    border: 1px solid #52515150;
-    outline: 0;
-} 
+input:focus,
+select:focus {
+  box-shadow: 1px 1px 15px 1px;
+  border: 1px solid #52515150;
+  outline: 0;
+}
 
 h3 {
   color: #e5e2e2da;
@@ -194,24 +195,21 @@ h3 {
   font-size: 1.8rem;
   text-align: center;
   margin-top: 0.6rem;
-  
 }
-h4{
-    
-width: 183px;
-height: 19px;
-left: 39px;
-top: 360px;
+h4 {
+  width: 183px;
+  height: 19px;
+  left: 39px;
+  top: 360px;
 
-font-family: 'Itim';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-text-align: center;
+  font-family: "Itim";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
 
-color: #E6E2E2;
-
+  color: #e6e2e2;
 }
 
 hr {
@@ -240,8 +238,6 @@ label {
   margin-left: 0.8rem;
 }
 
-
-
 .cadastrar {
   background-color: #e5e2e2;
   border: 0;
@@ -253,35 +249,32 @@ label {
   padding-bottom: 0.4rem;
   padding-top: 0.4rem;
   text-decoration: none;
-    font-family: 'Itim';
-    font-style: normal;
-    font-weight: 200;
-    font-size: 1.5rem;
-    color: #525151;
-
+  font-family: "Itim";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1.5rem;
+  color: #525151;
 }
-.input-container{
-  margin-left:0.8rem;
+.input-container {
+  margin-left: 0.8rem;
 }
 
-
-    
-menu img{
+menu img {
   height: 13%;
   margin: 0 3rem;
 }
-.voltar{
-    margin: 1rem 0.5rem;
-    width:40px;
-    color: #525151;
-    height:40px;
-    border-radius:0.8rem;
-
+.voltar {
+  margin: 1rem 0.5rem;
+  width: 60px;
+  color: #525151;
+  height: 40px;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
 }
-i{
-    font-size:25px;
+i {
+  font-size: 25px;
 }
-.foto{
-  margin:1rem 0;
+.foto {
+  margin: 1rem 0;
 }
 </style>
